@@ -40,7 +40,7 @@ The Intel/Altera HWLIB bare-metal library does includes a basic bare-metal
 My sample works with the standard Eclipse IDE for Embedded C/C++ Developers.
 
 Some of the things demonstrated:
-	- Setup UART0 using HWLIB
-	- Minimal newlib extension for some required stubs
-	- Semihosting debug printing
-	- UART0 debug printing
+- Setup UART0 using HWLIB
+- Minimal newlib extension for some required stubs
+- Semihosting debug printing
+- UART0 debug printing
