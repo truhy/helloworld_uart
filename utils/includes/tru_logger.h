@@ -38,7 +38,7 @@
 	#define DEBUG_PRINTF(str, ...) printf(str, ##__VA_ARGS__)
 #else
 	#define _NL "\n"
-	#define DEBUG_PRINTF(str, ...) do {} while(0)
+	#define DEBUG_PRINTF(str, ...) (void)0
 #endif
 
 #endif /* TRU_HWLIB_INC_TRU_LOGGER_H_ */
