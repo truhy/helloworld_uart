@@ -66,7 +66,6 @@ void hps_uart_flush_tx_wait(ALT_16550_HANDLE_t *handle){
 	support both modes.
 */
 void hps_uart_setup(ALT_16550_HANDLE_t *handle){
-	handle->device = ALT_16550_DEVICE_SOCFPGA_UART0;  // Select HPS UART0
 	handle->location   = 0;  // This will be filled in by the init function, just default to 0
 	handle->clock_freq = 0;  // This will be filled in by the init function, just default to 0
 
@@ -87,7 +86,7 @@ void hps_uart_write_hello(ALT_16550_HANDLE_t *handle){
 void hps_uart_test(ALT_16550_HANDLE_t *handle){
 	DEBUG_PRINTF("DEBUG: Setting up UART"_NL);  // Macro _NL contains the correct line ending
 
-	hps_uart_flush_tx_wait(handle);  // Optional: If there were UART transmissions earlier then we should flush and wait first, before we re-setup the UART
+	hps_uart_flush_tx_wait(handle);  // Conditional: If there were UART transmissions earlier (e.g. DEBUG_PRINTF) then we should flush and wait first, before we re-setup the UART
 	hps_uart_setup(handle);          // Setup the UART controller
 	hps_uart_write_hello(handle);    // Once the UART is set up, we can use the HWLIB alt_16550_fifo_write or alt_16550_fifo_write_safe functions to transmit messages
 }
@@ -105,6 +104,8 @@ int main(int argc, char **argv){
 	#endif
 
 	ALT_16550_HANDLE_t handle;  // HWLIB UART handle
+	handle.device = ALT_16550_DEVICE_SOCFPGA_UART0;  // Select HPS UART0
+
 	hps_uart_test(&handle);
 
 	wait_forever();
