@@ -26,9 +26,9 @@
 #include <sys/stat.h>
 #include <sys/unistd.h>
 #ifdef PRINTF_UART
-	#include "alt_uart.h"
-	#include "hps.h"
-	#include "socal.h"
+	#include "socal/alt_uart.h"
+	#include "socal/hps.h"
+	#include "socal/socal.h"
 #endif
 
 #ifndef SEMIHOSTING

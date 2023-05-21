@@ -19,10 +19,10 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 
-	Version: 20230319
+	Version: 20230521
 	Target: Arm Cortex A9 on the DE10-Nano development board
 
-	A basic "Hello world!" bare-metal C program for the DE10-Nano
+	A basic "Hello, World!" bare-metal C program for the DE10-Nano
 	development board.  It is for the SoC (aka HPS) part of the FPGA so it
 	should work on other Cyclone V SoC-FPGA dev boards, e.g.: DE1-SoC, DE-10
 	Standard, Arrow SoCKit, etc.
@@ -33,9 +33,9 @@
 */
 
 #include "alt_16550_uart.h"
-#include "alt_uart.h"
-#include "hps.h"
-#include "socal.h"
+#include "socal/alt_uart.h"
+#include "socal/hps.h"
+#include "socal/socal.h"
 #include "tru_logger.h"
 #include <string.h>
 
