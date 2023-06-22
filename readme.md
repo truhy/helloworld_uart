@@ -1,4 +1,4 @@
-# A basic "Hello, World!" bare-metal C program for the DE10-Nano development board.
+# "Hello, World!" for the DE10-Nano development board
 
 ## Overview
 
@@ -14,7 +14,7 @@ Minimum:
 This sample includes the project file for Eclipse IDE for Embedded C/C++
 Developers but you will need to setup other things as described in my guide.
 
-You can find the guide from my website:
+You can find the guide on my website:
 [https://truhy.co.uk](https://truhy.co.uk)
 
 ## Notes
@@ -35,9 +35,9 @@ start a standard serial com terminal software (e.g. Putty) and set it to use the
 relevant com port with the following settings:
 115200 baud, 8 data bits, no parity and 1 stop bit.
 
-The Intel/Altera HWLIB bare-metal library does includes a basic bare-metal
-"Hello, World!" sample but it requires the licensed ARM DS-5 IDE to get started.
-My sample works with the standard Eclipse IDE for Embedded C/C++ Developers.
+HWLIB already contains a bare-metal "Hello, World!" sample but it requires
+the licensed ARM DS-5 IDE to work, while mine only need the standard Eclipse IDE
+for Embedded C/C++ Developers.
 
 Some of the things demonstrated:
 - Setup UART0 using HWLIB

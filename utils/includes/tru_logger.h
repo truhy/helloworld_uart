@@ -19,7 +19,7 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 
-	Version: 20230319
+	Version: 20230619
 
 	Provides debug logging support for bare-metal program development.
 */
@@ -33,7 +33,7 @@
 #if defined(SEMIHOSTING)
 	#define _NL "\n"
 	#define DEBUG_PRINTF(str, ...) printf(str, ##__VA_ARGS__)
-#elif defined(PRINTF_UART)
+#elif defined(TRU_PRINTF_UART)
 	#define _NL "\r\n"
 	#define DEBUG_PRINTF(str, ...) printf(str, ##__VA_ARGS__)
 #else
