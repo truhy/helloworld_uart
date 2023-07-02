@@ -19,13 +19,14 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 
-	Version: 20230619
+	Version: 20230702
 */
 #include <errno.h>
-#include <newlib_ext.h>
 #include <sys/stat.h>
 #include <sys/unistd.h>
+#include "newlib_ext.h"
 #ifdef TRU_PRINTF_UART
+	// HWLIB includes
 	#include "socal/alt_uart.h"
 	#include "socal/hps.h"
 	#include "socal/socal.h"
