@@ -48,8 +48,7 @@
 #include <alt_printf.h>
 #include <alt_timers.h>
 #include "alt_config.h"
-
-#include "../../../../bsp_generated/pll_config.h"
+#include "pll_config.h"
 
 /* NOTE: To enable debugging output, delete the next line and uncomment the
    line after. */
