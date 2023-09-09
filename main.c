@@ -9,8 +9,10 @@
 	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 	copies of the Software, and to permit persons to whom the Software is
 	furnished to do so, subject to the following conditions:
+
 	The above copyright notice and this permission notice shall be included in all
 	copies or substantial portions of the Software.
+
 	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 	IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 	FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,7 +21,7 @@
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
 
-	Version: 20230521
+	Version: 202300909
 	Target: Arm Cortex A9 on the DE10-Nano development board
 
 	A basic "Hello, World!" bare-metal C program for the DE10-Nano
@@ -91,7 +93,7 @@ void hps_uart_test(ALT_16550_HANDLE_t *handle){
 	hps_uart_write_hello(handle);    // Once the UART is set up, we can use the HWLIB alt_16550_fifo_write or alt_16550_fifo_write_safe functions to transmit messages
 }
 
-void wait_forever(){
+void wait_forever(void){
 	DEBUG_PRINTF("DEBUG: Starting infinity loop"_NL);
 
 	volatile unsigned char i = 1;
