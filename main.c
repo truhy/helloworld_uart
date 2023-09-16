@@ -50,13 +50,8 @@
 	empty when all pending data in the FIFO (FIFO mode) or holding register
 	(non-FIFO mode) is transmitted.  This ensures all pending data has gone out.
 */
-void hps_uart_flush_tx_wait(ALT_16550_HANDLE_t *handle){
-	// Wait while not empty. Bit 6 of LSR register (TEMT bit): 0 = not empty, 1 = empty
-	switch(handle->device){
-		case ALT_16550_DEVICE_SOCFPGA_UART0: while((alt_read_word(ALT_UART_LSR_ADDR(ALT_UART0_ADDR)) & 0x00000040) == 0); break;
-		case ALT_16550_DEVICE_SOCFPGA_UART1: while((alt_read_word(ALT_UART_LSR_ADDR(ALT_UART1_ADDR)) & 0x00000040) == 0); break;
-		default: while((alt_read_word(ALT_UART_LSR_ADDR(handle->location)) & 0x00000040) == 0);
-	}
+void hps_uart_wait_empty(uint32_t uart_base_address){
+	while((alt_read_word(ALT_UART_LSR_ADDR(uart_base_address)) & 0x00000040) == 0);  // Flush UART and wait
 }
 
 /*
@@ -88,9 +83,9 @@ void hps_uart_write_hello(ALT_16550_HANDLE_t *handle){
 void hps_uart_test(ALT_16550_HANDLE_t *handle){
 	DEBUG_PRINTF("DEBUG: Setting up UART"_NL);  // Macro _NL contains the correct line ending
 
-	hps_uart_flush_tx_wait(handle);  // Conditional: If there were UART transmissions earlier (e.g. DEBUG_PRINTF) then we should flush and wait first, before we re-setup the UART
-	hps_uart_setup(handle);          // Setup the UART controller
-	hps_uart_write_hello(handle);    // Once the UART is set up, we can use the HWLIB alt_16550_fifo_write or alt_16550_fifo_write_safe functions to transmit messages
+	hps_uart_wait_empty(ALT_UART0_OFST);  // Flush UART and wait.  There may be pending UART transmissions from earlier (e.g. DEBUG_PRINTF) which use same UART, then we need to flush and wait before initialising the UART
+	hps_uart_setup(handle);               // Setup the UART controller
+	hps_uart_write_hello(handle);         // Once the UART is set up, we can use the HWLIB alt_16550_fifo_write or alt_16550_fifo_write_safe functions to transmit messages
 }
 
 void wait_forever(void){
