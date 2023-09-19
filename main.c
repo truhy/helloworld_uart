@@ -83,7 +83,7 @@ void hps_uart_write_hello(ALT_16550_HANDLE_t *handle){
 void hps_uart_test(ALT_16550_HANDLE_t *handle){
 	DEBUG_PRINTF("DEBUG: Setting up UART"_NL);  // Macro _NL contains the correct line ending
 
-	hps_uart_wait_empty(ALT_UART0_OFST);  // Flush UART and wait.  There may be pending UART transmissions from earlier (e.g. DEBUG_PRINTF) which use same UART, then we need to flush and wait before initialising the UART
+	hps_uart_wait_empty(ALT_UART0_OFST);  // Wait for UART transmission to complete.  There may be pending UART transmissions from earlier (e.g. DEBUG_PRINTF) which use same UART, then we need to flush and wait before initialising the UART
 	hps_uart_setup(handle);               // Setup the UART controller
 	hps_uart_write_hello(handle);         // Once the UART is set up, we can use the HWLIB alt_16550_fifo_write or alt_16550_fifo_write_safe functions to transmit messages
 }
