@@ -413,15 +413,6 @@
 	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
 		<project id="helloworld_uart.ilg.gnuarmeclipse.managedbuild.cross.target.elf.851943811" name="Executable" projectType="ilg.gnuarmeclipse.managedbuild.cross.target.elf"/>
 	</storageModule>
-	<storageModule moduleId="scannerConfiguration">
-		<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.111491908;ilg.gnuarmeclipse.managedbuild.cross.config.elf.debug.111491908.;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.848198460;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.1555632618">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-		<scannerConfigBuildInfo instanceId="ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.911578130;ilg.gnuarmeclipse.managedbuild.cross.config.elf.release.911578130.;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.483730697;ilg.gnuarmeclipse.managedbuild.cross.tool.c.compiler.input.597689148">
-			<autodiscovery enabled="true" problemReportingEnabled="true" selectedProfileId=""/>
-		</scannerConfigBuildInfo>
-	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="DebugBySemihosting">
@@ -438,4 +429,6 @@
 		</configuration>
 	</storageModule>
 	<storageModule moduleId="org.eclipse.cdt.make.core.buildtargets"/>
+	<storageModule moduleId="scannerConfiguration"/>
+	<storageModule moduleId="org.eclipse.cdt.core.pathentry"/>
 </cproject>
