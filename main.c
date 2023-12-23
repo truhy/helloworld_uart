@@ -22,14 +22,14 @@
 	SOFTWARE.
 
 	Version: 202300909
-	Target: Arm Cortex A9 on the DE10-Nano development board
+	Target: ARM Cortex-A9 on the DE10-Nano development board
 
 	A basic "Hello, World!" bare-metal C program for the DE10-Nano
 	development board.  It is for the SoC (aka HPS) part of the FPGA so it
 	should work on other Cyclone V SoC-FPGA dev boards, e.g.: DE1-SoC, DE-10
 	Standard, Arrow SoCKit, etc.
 
-	Uses the Intel/Altera HWLIB bare-metal library for many of the low level
+	Uses the Intel/Altera HWLib bare-metal library for many of the low level
 	hardware access, and these are identified by their naming prefix "alt_" or
 	"ALT_".
 */
@@ -56,9 +56,9 @@ void hps_uart_wait_empty(uint32_t uart_base_address){
 
 /*
 	Setup the UART. For UART0 most of this is already setup by the U-Boot-SPL,
-	however, for HWLIB we need to enable the FIFO trigger (threshold) levels
+	however, for HWLib we need to enable the FIFO trigger (threshold) levels
 	because it doesn't work without them set.  The actual problem is that
-	U-Boot-SPL sets up UART0 in non-threshold FIFO mode and HWLIB does not
+	U-Boot-SPL sets up UART0 in non-threshold FIFO mode and HWLib does not
 	support that mode.  See my newlib_ext.c, _write() function to learn how to
 	support both modes.
 */
@@ -77,7 +77,7 @@ void hps_uart_setup(ALT_16550_HANDLE_t *handle){
 
 void hps_uart_write_hello(ALT_16550_HANDLE_t *handle){
 	char message[] = "Hello, World!\r\n";
-	alt_16550_fifo_write_safe(handle, message, strlen(message), true);  // Test transmit using HWLIB function
+	alt_16550_fifo_write_safe(handle, message, strlen(message), true);  // Test transmit using HWLib function
 }
 
 void hps_uart_test(ALT_16550_HANDLE_t *handle){
@@ -85,7 +85,7 @@ void hps_uart_test(ALT_16550_HANDLE_t *handle){
 
 	hps_uart_wait_empty(ALT_UART0_OFST);  // Wait for UART transmission to complete.  There may be pending UART transmissions from earlier (e.g. DEBUG_PRINTF) which use same UART, then we need to flush and wait before initialising the UART
 	hps_uart_setup(handle);               // Setup the UART controller
-	hps_uart_write_hello(handle);         // Once the UART is set up, we can use the HWLIB alt_16550_fifo_write or alt_16550_fifo_write_safe functions to transmit messages
+	hps_uart_write_hello(handle);         // Once the UART is set up, we can use the HWLib alt_16550_fifo_write or alt_16550_fifo_write_safe functions to transmit messages
 }
 
 void wait_forever(void){
@@ -100,7 +100,7 @@ int main(int argc, char **argv){
 		initialise_monitor_handles();  // Initialise Semihosting
 	#endif
 
-	ALT_16550_HANDLE_t handle;  // HWLIB UART handle
+	ALT_16550_HANDLE_t handle;  // HWLib UART handle
 	handle.device = ALT_16550_DEVICE_SOCFPGA_UART0;  // Select HPS UART0
 
 	hps_uart_test(&handle);
